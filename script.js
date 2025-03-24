@@ -12,10 +12,13 @@ function addTask() {
     let taskList = document.getElementById("taskList");
 
     let li = document.createElement("li");
+    li.classList.add("task-item"); // Add a class for styling
+
     li.innerHTML = `
-        <span class="task-text" onclick="toggleTaskCompletion(this)">${taskInput}</span>
+        <span class="task-text">${taskInput}</span>
         <small>(Due: ${dueDateInput || "No deadline"})</small>
-        <button class="delete-btn" onclick="deleteTask(this)">X</button>
+        <button class="complete-btn" onclick="completeTask(this)">✅</button>
+        <button class="delete-btn" onclick="deleteTask(this)">❌</button>
     `;
 
     taskList.appendChild(li);
@@ -30,8 +33,9 @@ function deleteTask(element) {
     saveTasks();
 }
 
-function toggleTaskCompletion(element) {
-    element.classList.toggle("completed");  // Toggle the 'completed' class
+function completeTask(element) {
+    let taskItem = element.parentElement;
+    taskItem.classList.toggle("completed"); // Toggle completed class
     saveTasks();
 }
 
