@@ -13,7 +13,8 @@ function addTask() {
 
     let li = document.createElement("li");
     li.innerHTML = `
-        ${taskInput} <small>(Due: ${dueDateInput || "No deadline"})</small>
+        <span class="task-text" onclick="toggleTaskCompletion(this)">${taskInput}</span>
+        <small>(Due: ${dueDateInput || "No deadline"})</small>
         <button class="delete-btn" onclick="deleteTask(this)">X</button>
     `;
 
@@ -26,6 +27,11 @@ function addTask() {
 
 function deleteTask(element) {
     element.parentElement.remove();
+    saveTasks();
+}
+
+function toggleTaskCompletion(element) {
+    element.classList.toggle("completed");  // Toggle the 'completed' class
     saveTasks();
 }
 
