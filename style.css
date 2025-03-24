@@ -61,3 +61,12 @@ li {
     padding: 5px 10px;
     cursor: pointer;
 }
+.completed {
+    text-decoration: line-through; /* Strike-through for completed tasks */
+    color: green; /* Green color */
+}
+
+.completed::after {
+    content: " ✅"; /* Green tick after completed task */
+}
+
